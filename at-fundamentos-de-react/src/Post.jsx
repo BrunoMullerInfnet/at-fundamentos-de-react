@@ -1,10 +1,10 @@
 import "./Post.css";
 
-const Post = ({ posts, onClick }) => {
+const Post = ({ post, onClick }) => {
   return (
     <div className="post-card" onClick={onClick}>
-      <h3>{posts.title}</h3>
-      <p>{posts.body}</p>
+      <h3>{post.title}</h3>
+      <p>{post.body}</p>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./FetchData.css";
 import User from "./User";
 import Post from "./Post";
 import Comment from "./Comment";
@@ -6,10 +7,11 @@ import Comment from "./Comment";
 const FetchData = () => {
   const [users, setUsers] = useState([]);
   const [posts, setPosts] = useState([]);
-  const [comments, setComents] = useState([]);
+  const [comments, setComments] = useState([]);
   const [userId, setUserId] = useState(null);
   const [selectedUser, setSelectedUser] = useState(null);
   const [selectedPost, setSelectedPost] = useState(null);
+  const [displayGrid, setDisplayGrid] = useState(false);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -45,7 +47,7 @@ const FetchData = () => {
         `https://jsonplaceholder.typicode.com/comments?postId=${postId}`
       );
       const data = await response.json();
-      setComents(data);
+      setComments(data);
       setSelectedPost(postId);
     } catch (error) {
       console.error("Error ao buscas os comentários pela API: ", error);
@@ -56,24 +58,47 @@ const FetchData = () => {
     setUserId(user.id);
     setSelectedUser(user);
     fetchPosts(user.id);
+    setSelectedPost(null);
   };
 
   const handlePostClick = (postId) => {
     fetchComments(postId);
+    setSelectedPost(postId);
   };
 
   const handleVoltarUsers = () => {
     setUserId(null);
     setPosts([]);
     setSelectedUser(null);
-    setComents([]);
-    selectedPost(null);
+    setComments([]);
+    setSelectedPost(null);
+  };
+
+  const handleVoltarPosts = () => {
+    setSelectedPost(null);
+    setComments([]);
+  };
+
+  const toggleFlexGrid = () => {
+    setDisplayGrid((displayGrid) => !displayGrid);
+  };
+
+  const handleDeletePost = (commentId) => {
+    setComments((prevComments) =>
+      prevComments.filter((comment) => comment.id !== commentId)
+    );
   };
 
   return (
     <div className="data-container">
       {userId === null ? (
-        <div className="user-container">
+        <div className={`user-container ${displayGrid ? "grid" : "flex"}`}>
+          <button
+            onClick={toggleFlexGrid}
+            className={displayGrid ? "grid" : "flex"}
+          >
+            {displayGrid ? "Vizualizar em lista" : "Vizualizar em grade"}
+          </button>
           {users.map((user) => (
             <User
               key={user.id}
@@ -87,17 +112,23 @@ const FetchData = () => {
           <button onClick={handleVoltarUsers}>Voltar</button>
           <h2>Postagens de {selectedUser.name}</h2>
           {posts.map((post) => (
-            <Post key={post.id} posts={post} />
+            <Post
+              key={post.id}
+              post={post}
+              onClick={() => handlePostClick(post.id)}
+            />
           ))}
         </div>
       ) : (
         <div className="comment-container">
-          <button onClick={() => setSelectedPost(null)}>
-            Voltar para Postagens
-          </button>
+          <button onClick={handleVoltarPosts}>Voltar para Postagens</button>
           <h2>Comentários</h2>
           {comments.map((comment) => (
-            <Comment key={comment.id} comment={comment} />
+            <Comment
+              key={comment.id}
+              comment={comment}
+              onDelete={handleDeletePost}
+            />
           ))}
         </div>
       )}

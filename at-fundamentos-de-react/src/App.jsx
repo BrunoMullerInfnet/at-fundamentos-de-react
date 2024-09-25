@@ -5,7 +5,6 @@ function App() {
   return (
     <div className="content">
       <header>
-        <img src="" alt="" />
         <h1>Rede Social</h1>
       </header>
 
@@ -14,7 +13,9 @@ function App() {
         <FetchData />
       </main>
 
-      <footer className="footer"></footer>
+      <footer className="footer">
+        <p>© 2024 Rede Social. Site feito por Bruno Müller.</p>
+      </footer>
     </div>
   );
 }

@@ -1,0 +1,80 @@
+.data-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  font-family: "Roboto", sans-serif;
+}
+
+.user-container,
+.post-container,
+.comment-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+button {
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  font-family: "Roboto", sans-serif;
+}
+
+button:hover {
+  background-color: #5a6268;
+  transform: scale(1.01);
+}
+
+button.flex {
+  background-color: #007bff;
+}
+
+button.grid {
+  background-color: #28a745;
+  height: 100px;
+  width: 100px;
+  border-radius: 20%;
+  text-align: center;
+}
+
+h2 {
+  color: #343a40;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #555;
+  font-size: 1.1em;
+}
+
+.user-container.flex {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.user-container.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.user-card {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
+}
+
+.user-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}

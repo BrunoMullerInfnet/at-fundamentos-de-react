@@ -1,0 +1,33 @@
+.user-card {
+  border: 1px solid #d4af37;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.user-card:hover {
+  background-color: #f0e68c;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.user-card h2 {
+  margin: 0;
+  color: #003366;
+  font-size: 1.5em;
+}
+
+.catchphrase {
+  color: #757575;
+  font-size: 1em;
+  margin: 5px 0 0;
+  font-style: italic;
+}
+
+.user-card p {
+  color: #757575;
+  font-size: 1em;
+  margin: 5px 0 0;
+}

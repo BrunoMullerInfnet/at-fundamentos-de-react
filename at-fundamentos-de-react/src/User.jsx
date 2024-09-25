@@ -4,7 +4,7 @@ const User = ({ user, onClick }) => {
   return (
     <div className="user-card" onClick={onClick}>
       <h2> {user.name}</h2>
-      <p>{user.company.catchPhrase}</p>
+      <p className="captchphrase">{user.company.catchPhrase}</p>
     </div>
   );
 };
