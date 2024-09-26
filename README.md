@@ -24,4 +24,8 @@ A aplicação é organizada da seguinte forma:
 - **src/**
   - **components/**: Contém todos os componentes reutilizáveis, como `User`, `Post`, `Comment`, e `FetchData`.
   - **App.js**: Componente principal que organiza a estrutura da aplicação, incluindo header, main e footer.
+  - **FetchData.js**: Componente onde faço o consumo da api e chamo os demais componentes, passando os devidos parêmtros 
+  - **User.js**: Componente onde organizo a exibição dos usuários
+  - **Post.js**: Componente onde organizo a exibição dos posts.
+  - **Comment.js**: Componente onde organizo a exibição dos comentários
   - **styles/**: Contém os arquivos CSS para estilização da interface.
