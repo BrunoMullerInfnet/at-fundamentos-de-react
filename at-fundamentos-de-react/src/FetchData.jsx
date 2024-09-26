@@ -11,7 +11,7 @@ const FetchData = () => {
   const [userId, setUserId] = useState(null);
   const [selectedUser, setSelectedUser] = useState(null);
   const [selectedPost, setSelectedPost] = useState(null);
-  const [displayGrid, setDisplayGrid] = useState(false);
+  const [displayGrid, setDisplayGrid] = useState(true);
 
   useEffect(() => {
     const fetchUsers = async () => {
